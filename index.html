@@ -6,20 +6,20 @@
         <link rel="stylesheet" href="style.css">
         <!-- <script type="text/javascript" src="./js/calculator.js"> </script> -->
     </head>
-    <body class="light">
-        <div id="main">
-            <div id="screen-b">
+    <body class="light dark">
+        <div id="main" class="main">
+            <div id="screen-b" class="screen-b">
                 <button id="i" onclick="alert('developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.')">🛈</button>
                 <button id="my-calc">my Calculator</button>
                 <button id="settings">⚙</button>
-                <button id="mode">mode</button>
-                <div id="display" style="background-color: yellow;"></div>
+                <button id="mode">💡</button>
+                <div id="display"></div>
                 <button id="back" onclick="enter(id);">⮐</button>
                 <button id="history">🕓</button>
                 <button id="c" onclick="enter(id);">c</button>
                 <button id="/" onclick="enter(id);">/</button>
             </div>
-            <div id="num-b">
+            <div id="num-b" class="num-b">
                 <button id="root" onclick="enter(id)">√</button>
                 <button id="7" class="numbers" onclick="enter(id);">7</button>
                 <button id="8" class="numbers" onclick="enter(id);">8</button>
@@ -36,7 +36,7 @@
                 <button id="3" class="numbers" onclick="enter(id);">3</button>
                 <button id="+" onclick="enter(id);">+</button>
             </div>
-            <div id="leftover">
+            <div id="leftover" class="leftover">
                 <button id="large-empty-1"></button>
                 <button id="+-">±</button>
                 <button id="0" class="numbers" onclick="enter(id);">0</button>

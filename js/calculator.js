@@ -23,6 +23,10 @@ function enter(id){
         return;
     }
 
+    if ((lastEntered=='eq1') && numbers.includes(id)){ //in case of for ex: 1+4=5 -> 6+8=14 
+        reset();
+    }
+
     lastEntered = id;
 
     if(!(id == "eq1") && !(actions.includes(id)) && !(id=='back')){ //id is a number
@@ -76,7 +80,7 @@ function reset(){
 }
 
 
-function eval(){ //what about the next enter to the function
+function eval(){ 
 
     curr_val = eq(first_num, second_num, curr_oper);
     display(curr_val);

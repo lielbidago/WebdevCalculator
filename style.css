@@ -1,71 +1,84 @@
-#main {
+.main {
   height: 100vh;
   width: 50vw;
+  min-width: 250px;
 }
 
-#main > div > * {
+.main > .screen-b {
+  padding: 0%;
+}
+
+.main > .num-b {
+  padding: 0%;
+}
+
+.main > .leftover {
+  padding: 0%;
+}
+
+.dark > .screen-b {
+  padding: 0%;
+}
+
+.dark > .num-b {
+  padding: 0%;
+}
+
+.dark > .leftover {
+  padding: 0%;
+}
+
+.main > div > * {
   background-color: aliceblue;
   font-size: large;
   color: black;
   border: solid black 1px;
   text-align: center;
   align-items: stretch;
-  padding: 15px 32px;
+  padding: 15px;
 }
 
-.dark > #main > div > * {
-  background-color: rgb(44, 42, 155);
+.dark > .main > div > * {
+  background-color: rgb(97, 79, 101);
+  font-size: large;
+  color: rgb(228, 221, 221);
+  border: solid rgb(228, 221, 221) 1px;
+  text-align: center;
+  align-items: stretch;
+  padding: 15px;
+}
+
+.main > div > *:hover {
+  background-color: rgb(158, 221, 208);
   font-size: large;
   color: black;
   border: solid black 1px;
   text-align: center;
   align-items: stretch;
-  padding: 15px 32px;
 }
 
-#main > div > *:hover {
-  background-color: rgb(123, 175, 221);
+.dark > .main > div > *:hover {
+  background-color: rgb(140, 116, 151);
   font-size: large;
-  color: black;
-  border: solid black 1px;
+  color: rgb(228, 221, 221);
+  border: solid rgb(228, 221, 221) 1px;
   text-align: center;
   align-items: stretch;
-  padding: 15px 32px;
 }
 
-#main > div > *:active {
-  background-color: rgb(49, 128, 197);
-  font-size: large;
-  color: rgb(255, 255, 255);
-  border: solid black 1px;
-  text-align: center;
-  align-items: stretch;
-  padding: 15px 32px;
-}
-
-/* #main > .button > *{
-    background-color: aliceblue;
-    border: solid black 1px;
-    color: white;
-
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-} */
-#main > #screen-b {
+.main > .screen-b {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: repeat(3, 1fr);
 }
 
-#main > #num-b {
+.main > .num-b {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
 
-#main > #leftover {
+.main > .leftover {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -91,10 +104,23 @@
   grid-row: auto;
 }
 
-#num-b > .numbers {
+.num-b > .numbers {
   background-color: rgb(253, 253, 253);
 }
 
-#leftover > .numbers {
+.leftover > .numbers {
   background-color: rgb(253, 253, 253);
+}
+
+.dark .num-b > .numbers {
+  background-color: rgb(88, 67, 97);
+}
+
+.dark .leftover > .numbers {
+  background-color: rgb(88, 67, 97);
+}
+
+#display {
+  background-color: rgb(166, 226, 201);
+  color: black;
 }/*# sourceMappingURL=style.css.map */
