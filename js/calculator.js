@@ -6,7 +6,7 @@ let curr_val = 0;
 // let n = null;
 const actions=['+','-','/','x'];
 const numbers=['0','1','2','3','4','5','6','7','8','9'];
-let dispaly = "";
+let display = "";
 let cur = "";
 let lastEntered = null;
 
@@ -14,7 +14,7 @@ function enter(id){
 
     if (id =='c'){
         reset();
-        display("");
+        to_display("");
         return;
     }
 
@@ -31,12 +31,14 @@ function enter(id){
 
     if(!(id == "eq1") && !(actions.includes(id)) && !(id=='back')){ //id is a number
         cur = cur.concat(id);
-        display(dispaly.concat(cur));
+        display = display.concat(cur);
+        to_display(display);
         // if (id=='back'){
         //     display('error');
         // }
     }else if ((actions.includes(id)) && first_num){ //meaning id is in actions and fn is full
-        display(dispaly.concat(id));
+        display = display.concat(id);
+        to_display(display);
         if (!second_num){ //sn is empty
             if (cur){
                 second_num = Number(cur);
@@ -52,12 +54,14 @@ function enter(id){
             second_num = Number(cur);
         }
     }else if((actions.includes(id)) && !first_num && !(id =="eq1")){ //id in actions & fn is empty
-        display(dispaly.concat(id));
+        display = display.concat(id);
+        to_display(display);
         first_num = Number(cur);
         curr_oper = id;
         cur = "";
     }else if(id == "eq1"){
-        display(dispaly.concat("="));
+        display = display.concat("=");
+        to_display(display);
         second_num = Number(cur);
             if (!curr_oper){ // incase we entered a number and then pressed '='
                 curr_oper = "+";
@@ -67,6 +71,7 @@ function enter(id){
         second_num = 0;
         curr_oper = null;
         cur = "";
+        display = "";
         
     }
 }
@@ -83,7 +88,7 @@ function reset(){
 function eval(){ 
 
     curr_val = eq(first_num, second_num, curr_oper);
-    display(curr_val);
+    to_display(curr_val);
     
 }
 
@@ -94,7 +99,7 @@ function back(last){
     }else if (numbers.includes(last)){//if last is number
         cur = cur.slice(0,-2);
     }else if (last == 'eq1'){
-        display('error - cant back after "="');
+        to_display('error - cant back after "="');
     }
 }       
 
@@ -131,7 +136,7 @@ function div(first_num,second_num){
     return first_num / second_num;
 }
 
-function display(todisplay){
+function to_display(todisplay){
     document.getElementById("display").innerHTML = todisplay;
 }
 // button.addEventListener('click', (event) => {
