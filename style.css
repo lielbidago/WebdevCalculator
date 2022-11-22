@@ -1,14 +1,22 @@
-.main {
+.light {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  padding: 0%;
+}
+
+.light .main {
   height: 100vh;
   width: 50vw;
   min-width: 250px;
 }
 
-.main > .screen-b {
+.light .main > .screen-b {
   padding: 0%;
 }
 
-.main > .num-b {
+.light .main > .num-b {
   padding: 0%;
 }
 
@@ -123,4 +131,22 @@
 #display {
   background-color: rgb(166, 226, 201);
   color: black;
-}/*# sourceMappingURL=style.css.map */
+}
+
+#scienti {
+  background-color: rgb(160, 221, 186);
+  border: solid black 1px;
+  height: 73vh;
+  font-size: large;
+  text-align: center;
+}
+
+#log {
+  background-color: rgb(208, 188, 188);
+  border: solid black 1px;
+  height: 73vh;
+  font-size: large;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -7,12 +7,15 @@
         <!-- <script type="text/javascript" src="./js/calculator.js"> </script> -->
     </head>
     <body class="light">
+        <div id="scienti">
+            <p>scientific</p>
+        </div>
         <div id="main" class="main">
             <div id="screen-b" class="screen-b">
                 <button id="i" onclick="alert('developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.')">🛈</button>
                 <button id="my-calc">my Calculator</button>
-                <button id="settings">⚙</button>
-                <button id="mode" onclick="change_mode(id);">💡</button>
+                <button id="config" href="./config.html">⚙</button>
+                <button id="light" onclick="change_mode(id);">💡</button>
                 <div id="display"></div>
                 <button id="back" onclick="enter(id);">⮐</button>
                 <button id="history" onclick="change_mode(id);">🕓</button>
@@ -20,7 +23,7 @@
                 <button id="/" onclick="enter(id);">/</button>
             </div>
             <div id="num-b" class="num-b">
-                <button id="root" onclick="enter(id)">√</button>
+                <button id="scientific" onclick="change_mode(id);">√</button>
                 <button id="7" class="numbers" onclick="enter(id);">7</button>
                 <button id="8" class="numbers" onclick="enter(id);">8</button>
                 <button id="9" class="numbers" onclick="enter(id);">9</button>
@@ -47,11 +50,8 @@
                 <!-- <div id="eq2"></div> -->
             </div>
         </div>
-        <div id="scienti">
-            
-        </div>
         <div id="log">
-             
+            <p>history</p>
         </div>
         <script type="text/javascript" src="./js/calculator.js"> </script>
         <script type="text/javascript" src="./js/application.js"></script>
