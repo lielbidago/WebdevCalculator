@@ -4,7 +4,8 @@
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Calculator</title>
         <link rel="stylesheet" href="style.css">
-        <!-- <script type="text/javascript" src="./js/calculator.js"> </script> -->
+        <!-- onclick="alert('developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.')" -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body class="light calc">
         <div id="log">
@@ -13,7 +14,7 @@
         </div>
         <div id="main" class="main">
             <div id="screen-b" class="screen-b">
-                <button id="i" onclick="alert('developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.')">🛈</button>
+                <button id="i" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">🛈</button>
                 <button id="my-calc">my Calculator</button>
                 <button id="config" ><a href="./config.html">⚙</a></button>
                 <button id="light" onclick="change_mode(id);">💡</button>
@@ -62,7 +63,34 @@
                 <button id="π"  onclick="enter(id);">π</button>
             </div>
         </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">My Calculator</h4>
+                    </div>
+                <div class="modal-body">
+                  <p>developer: liel bidago,
+                    <br>
+                     this is stage: 1,
+                    <br>
+                     This app is an Calculator.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Back to calculations</button>
+                </div>
+            </div>   
+            </div>
+        </div>
         <script type="text/javascript" src="./js/calculator.js"> </script>
         <script type="text/javascript" src="./js/application.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
     </body>
-    </html>
+    </html> 

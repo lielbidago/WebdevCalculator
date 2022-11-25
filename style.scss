@@ -12,11 +12,14 @@
 
 @media(max-width:768px){
     .calc{
-        display:flex;
-        // flex-flow: column;
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
         width: 100vw;
         height: 80vh;
         padding: 0%;
+        overflow: visible;
+
 
         #log{
             height: 20%;

@@ -8,10 +8,13 @@
 
 @media (max-width: 768px) {
   .calc {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     width: 100vw;
     height: 80vh;
     padding: 0%;
+    overflow: visible;
   }
   .calc #log {
     height: 20%;

@@ -2,7 +2,7 @@ let light_f:boolean = false;
 let scien_f = false; // meaning scientific mode is off
 let history_f = false;
 let str_url = "";
-const info = 'developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.';
+const info = 'developer: liel bidago,\n this is stage: 1.0.0,\nThis app is an Calculator.';
 
 function change_mode(id){
      
