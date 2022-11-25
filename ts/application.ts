@@ -1,6 +1,9 @@
 let light_f:boolean = false;
 let scien_f = false; // meaning scientific mode is off
 let history_f = false;
+let str_url = "";
+const info = 'developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.';
+
 function change_mode(id){
      
     if(id =='light'){
@@ -37,7 +40,7 @@ function change_mode(id){
             history_f = !history_f;
         }
     }else if(id=='config'){
-        
+
     }
     //     if(document.body.className =='light'){  <----- dark mode
     //         document.body.className ='dark';
@@ -65,3 +68,36 @@ function on_off(flag:boolean, bt: HTMLElement){
 function get_item(id_str:string):HTMLElement{
     return  document.getElementById(id_str) || document.createElement('display_'+id_str);
 }
+
+function get_config_result(){
+    // function getCurrentURL () {
+    //     return window.location.href
+    //   }
+      
+    //   // Example
+    //   const url = getCurrentURL()
+    //   let param = new URLSearchParams(url);
+    //   alert(param);
+    alert(document.forms[0]);
+}
+
+document.addEventListener("DOMContentLoaded", config_set);
+
+function config_set(){
+    const data = window.location.search;
+    let params = new URLSearchParams(data);
+    const color = params.get('bgcolor');
+    const mode = params.get('mode');
+    const font = params.get('font');
+    console.log(document.body.classList[0]);
+    if (color){
+        document.body.style.background = color;
+    }
+    if(mode){
+        document.body.className = mode+" "+"calc";
+    }
+    if(font){
+        document.body.style.fontFamily = font;
+    }
+}
+

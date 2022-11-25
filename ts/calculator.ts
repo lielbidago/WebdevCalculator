@@ -3,25 +3,32 @@
 // 1) div by 0 - to_display("Error - division by 0");
 // 2) check for dots
 // 3) check for errors in sc_eval
+
 let first_num = 0;
 let second_num = 0;
 let curr_oper = "";
 let curr_val = 0;
-// let n = null;
-const actions=['+','-','/','x'];
-const numbers=['0','1','2','3','4','5','6','7','8','9'];
-let display = "";
 let cur = "";
 let lastEntered:string = "";
- 
+
+const actions=['+','-','/','x'];
+const numbers=['0','1','2','3','4','5','6','7','8','9'];
+const sci_actions = ["**2","**1/2","**","**1/","%","π"];
+let display = "";
+let to_log = '';
 
 document.addEventListener('DOMContentLoaded', ()=>to_display(display));
+const DISPLAY = document.getElementById("display") || document.createElement('display_none');
+const LOG_SCREEN = document.getElementById("calculations") as Element;
+
 
 function enter(id:string){
 
     if (id =='c'){
         reset();
+        to_log='';
         to_display("");
+        op_log("");
         return;
     }
 
@@ -32,13 +39,9 @@ function enter(id:string){
 
     if (!scien_f){ //if mode scienti is off
         simple_eval(id);
-        // scien_f = !scien_f;
     }else{
         sc_eval(id);
-        // scien_f = !scien_f;
     }
-    
-        
     
 }
 function simple_eval(id){
@@ -58,13 +61,9 @@ function simple_eval(id){
         to_display(display); 
 
     }else if ((actions.includes(id)) && first_num){ //meaning id is in actions and fn is full
-        display +=id;
+        display=id; //
         to_display(display);
         if (!second_num){ //sn is empty
-            if(id =='/' && cur =='0'){ //in case of division with 0 !!!!!
-                to_display("Error - division by 0");
-                return;
-            }
             if (cur){
                 second_num = Number(cur);
                 first_num = eq(first_num, second_num, curr_oper);
@@ -77,15 +76,16 @@ function simple_eval(id){
             first_num = eq(first_num, second_num, curr_oper);
             curr_oper = id;
             second_num = Number(cur);
+            
         }
     }else if((actions.includes(id)) && !first_num && !(id =="eq1")){ //id in actions & fn is empty
-        display +=id;
+        display =id; //
         to_display(display);
         first_num = Number(cur);
         curr_oper = id;
         cur = "";
     }else if(id == "eq1"){
-        display +="=";
+        display ="="; //
         to_display(display);
         second_num = Number(cur);
 
@@ -99,30 +99,39 @@ function simple_eval(id){
         curr_oper = "";
         cur = "";
         display = "";
+        to_log+='<br>';
         
     }
 }
 function sc_eval(id){
-    console.log(id);
 
-    if (actions.includes(id) || numbers.includes(id)){
+    if (actions.includes(id) || numbers.includes(id) || sci_actions.includes(id)){
+        
         if(id=='x'){
             display += '*';
-            console.log(display);
-        }else{
-            display += id;
-            console.log(display);
+        }else if(id=='π'){
+            display += "*3.14"; 
+        }else if(display.endsWith('**1/')){
+            display = display.slice(0,-4)+"**(1/"+id+")";
+            return;
         }
-        
+        display+=id;
         to_display(display); 
 
     }else if(id=='eq1'){
-        console.log(display,'=',eval(display));
-        curr_val = eval(display);
+        to_display('=');
+        
+        // if(display.includes("**1/")){
+        //     let base = display[display.indexOf("**1/")-1]
+        //     display.lastIndexOf("**1/")+1)
+        // }
+        
+        console.log(display," display ");
+        curr_val = eval(display.replace('<br>',''));
+        console.log(curr_val);
         display='';
         to_display(String(curr_val)); 
         reset();
-
     }
 }
 
@@ -145,8 +154,19 @@ function zero_string(n:number):string{
 function eval_result(){ 
     curr_val = eq(first_num, second_num, curr_oper);
     to_display(String(curr_val));
-
 }
+// function eval_sci_actions(pre_str:string):string{
+//     //2+3*2-4**8√12
+    
+//     for(let i=0;i<pre_str.length-2;i++){ // so √ wont be at the ending
+//         if(pre_str[i]=='√'){
+//             pre_str=pre_str.slice(0,i)+(String(Math.sqrt(Number(pre_str[i+1]))))+pre_str.slice(i+1,-1);
+//         }else if (pre_str[i]=='R' && i>1){ //so the root will have both base and root number
+//             pre_str=pre_str.slice(0,i)+(String(Number(pre_str[i+1])**(1/Number(pre_str[i+1])))+pre_str.slice(i+1,-1);
+//         }
+//     }
+//     return pre_str;
+// }
 
 function back(last){
     
@@ -189,12 +209,26 @@ function div(first_num,second_num){
     return first_num / second_num;
 }
 
-const DISPLAY = document.getElementById("display") || document.createElement('display_none');
+
 
 function to_display(todisplay:string){
-    
+    if (todisplay == 'Infinity'){
+        todisplay = "Error - division by 0";
+    }
     DISPLAY.innerHTML = todisplay;
+    op_log(todisplay);
 }
+
+function op_log(log_this){
+    
+    if (log_this == "="){
+        to_log+='<br>';
+    }
+    to_log += log_this;
+
+    LOG_SCREEN.innerHTML = to_log;
+}
+
 
 // function display_check(todisplay:string, DISPLAY()?: HTMLElement){
 //     DISPLAY !== undefined ? DISPLAY().innerHTML = todisplay : () => {return};

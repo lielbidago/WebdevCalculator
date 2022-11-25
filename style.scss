@@ -1,71 +1,189 @@
+.calc{
+    background-color: rgb(224, 200, 220);
+    padding:0%;
+    height: 100vh;
+    max-height: 60%;
+    align-items: center;
+
+    // margin: 0 auto;
+    // display: inline-block;
+    // align-self: center;
+}
+
+@media(max-width:768px){
+    .calc{
+        display:flex;
+        // flex-flow: column;
+        width: 100vw;
+        height: 80vh;
+        padding: 0%;
+
+        #log{
+            height: 20%;
+            width: 100%;
+            order:2;
+        }
+    
+        .main{
+            height: 60%;
+            width: 100%;
+            order:1;
+        }
+    
+        #scienci{
+            height: 20%;
+            width: 100%;
+            order:3;
+        }
+    }
+
+    
+
+
+}
+
 .light{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+    // padding:0%;
+
+    .light .main{
+        height: 100vh;
+        width: 50vw;
+        min-width: 768px;
+    }
+    .light .main >.screen-b{
+        padding:0%;
+    }
+    .light .main >.num-b{
+        padding:0%;
+    }
+
+    .main > div > * {
+        background-color: rgb(223, 231, 237);
+        color: black;
+        border: solid black 1px;
+        // height: 20%;
+    }
+
+    .main > div >*:hover {
+        background-color: rgb(158, 221, 208);
+    }
+
+    .num-b > .numbers{
+        background-color: rgb(253, 253, 253);
+    }
+    
+    .leftover > .numbers{
+        background-color: rgb(253, 253, 253);
+    }
+
+}
+
+.dark{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     height: 100vh;
     padding:0%;
 
+    .dark .main{
+        height: 100vh;
+        width: 50vw;
+        min-width: 768px;
+    }
+
+    .dark >.screen-b{
+        padding:0%;
+    }
+    .dark >.num-b{
+        padding:0%;
+    }
+    .dark >.leftover{
+        padding:0%;
+    }
+    
+    .main > div > * {
+        background-color: rgb(97, 79, 101);
+        color: rgb(228, 221, 221);
+        border: solid rgb(228, 221, 221) 1px;
+    }
+
+    .main > div >*:hover {
+        background-color: rgb(140, 116, 151);
+    }
+
+    .dark .num-b > .numbers{
+        background-color: rgb(88, 67, 97);
+        
+    }
+    
+    .dark .leftover > .numbers{
+        background-color: rgb(88, 67, 97);
+    }
+
 }
-.light .main{
+
+.main{
     height: 100vh;
     width: 50vw;
-    min-width: 250px;
-}
-.light .main >.screen-b{
-    padding:0%;
-}
-.light .main >.num-b{
-    padding:0%;
-}
-.main >.leftover{
-    padding:0%;
-}
-.dark >.screen-b{
-    padding:0%;
-}
-.dark >.num-b{
-    padding:0%;
-}
-.dark >.leftover{
-    padding:0%;
-}
-.main > div > * {
-    background-color: aliceblue;
-    font-size: large;
-    color: black;
-    border: solid black 1px;
-    text-align: center;
-    align-items: stretch;
-    padding: 15px;
+    align-self:baseline; 
+
 }
 
-.dark> .main > div >* {
-    background-color: rgb(97, 79, 101);
+#scienti {
+        // display: block;
+        background-color: rgb(201, 231, 213);
+        border: solid black 1px;
+        height: 90vh;
+        font-size: large;
+        text-align: center;
+        max-width: 200px;
+        align-self:baseline;
+        min-height: auto;
+        
+}
+    
+#log{ //history
+        background-color: rgb(247, 223, 243);
+        border: solid black 1px;
+        height: 90vh;
+        font-size: large;
+        text-align: center;
+        max-width: 200px;
+        align-self:baseline;
+
+        h3{
+            color:grey;
+            border-bottom: solid grey 1px;
+        }
+
+}
+
+
+.main > div > * {
     font-size: large;
-    color: rgb(228, 221, 221);
-    border: solid rgb(228, 221, 221) 1px;
     text-align: center;
     align-items: stretch;
     padding: 15px;
+
 }
+
 
 .main > div >*:hover {
-    background-color: rgb(158, 221, 208);
+    // background-color: rgb(158, 221, 208);
     font-size: large;
-    color: black;
-    border: solid black 1px;
     text-align: center;
     align-items: stretch;
     // padding: 15px; //32px
 }
 .dark> .main > div >*:hover {
-    background-color: rgb(140, 116, 151);
     font-size: large;
-    color: rgb(228, 221, 221);
-    border: solid  rgb(228, 221, 221) 1px;
     text-align: center;
     align-items: stretch;
-    // padding: 15px;
+
 }
 
 
@@ -109,42 +227,49 @@
     grid-row: auto;
 }
 
-.num-b > .numbers{
-    background-color: rgb(253, 253, 253);
-}
-
-.leftover > .numbers{
-    background-color: rgb(253, 253, 253);
-}
-.dark .num-b > .numbers{
-    background-color: rgb(88, 67, 97);
-    
-}
-
-.dark .leftover > .numbers{
-    background-color: rgb(88, 67, 97);
-}
 
 #display{
-    background-color: rgb(166, 226, 201);
+    background-color: rgb(186, 238, 216);
     color: black;
 }
 
-#scienti {
-    // display: block;
-    background-color: rgb(160, 221, 186);
-    border: solid black 1px;
-    height: 73vh;
-    font-size: large;
-    text-align: center;
-    
+#calculations{
+    display:block;
+    p{
+        white-space: pre-wrap;
+    }
 }
 
-#log{
-    background-color: rgb(208, 188, 188);
-    border: solid black 1px;
-    height: 73vh;
-    font-size: large;
-    text-align: center;
+.sci_buttons{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    
+    button{
+        font-size: large;
+        text-align: center;
+        align-items: stretch;
+        padding: 15px;
+        background-color: rgb(201, 231, 213);
+        border: solid black 1px;
+    }
 }
+
+// #scienti {
+//     // display: block;
+//     background-color: rgb(201, 231, 213);
+//     border: solid black 1px;
+//     height: 60vh;
+//     font-size: large;
+//     text-align: center;
+    
+// }
+
+// #log{
+//     background-color: rgb(247, 223, 243);
+//     border: solid black 1px;
+//     height: 60vh;
+//     font-size: large;
+//     text-align: center;
+// }
 

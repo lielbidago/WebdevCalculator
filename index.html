@@ -3,18 +3,19 @@
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Calculator</title>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="style.css">
         <!-- <script type="text/javascript" src="./js/calculator.js"> </script> -->
     </head>
-    <body class="light">
-        <div id="scienti">
-            <p>scientific</p>
+    <body class="light calc">
+        <div id="log">
+            <h3>🕓 operetions log</h3>
+            <p id="calculations"></p>
         </div>
         <div id="main" class="main">
             <div id="screen-b" class="screen-b">
                 <button id="i" onclick="alert('developer: liel bidago,\n this is stage: 1,\nThis app is an Calculator.')">🛈</button>
                 <button id="my-calc">my Calculator</button>
-                <button id="config" href="./config.html">⚙</button>
+                <button id="config" ><a href="./config.html">⚙</a></button>
                 <button id="light" onclick="change_mode(id);">💡</button>
                 <div id="display"></div>
                 <button id="back" onclick="enter(id);">⮐</button>
@@ -50,8 +51,16 @@
                 <!-- <div id="eq2"></div> -->
             </div>
         </div>
-        <div id="log">
-            <p>history</p>
+        <div id="scienti">
+            <h3>scientific</h3>
+            <div class="sci_buttons">
+                <button id="**2" onclick="enter(id);">x^2</button>
+                <button id="**1/2" onclick="enter(id);">2√x</button>
+                <button id="**"  onclick="enter(id);">x^y</button>
+                <button id="**1/"  onclick="enter(id);">y√x</button>
+                <button id="%"  onclick="enter(id);">mod</button>
+                <button id="π"  onclick="enter(id);">π</button>
+            </div>
         </div>
         <script type="text/javascript" src="./js/calculator.js"> </script>
         <script type="text/javascript" src="./js/application.js"></script>

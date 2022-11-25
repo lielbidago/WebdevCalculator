@@ -6,36 +6,37 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <form action="./index.html" method="get">
+        <form action="index.html" method="get">
             <div>
                 <label for="bgcolor"><h3>choose background-color:</h3></label>
-                <select type="text" id="bgcolor" form="bgcolor">
-                    <option value="GitHub">pink</option>
-                    <option value="LinkedIn">blue</option>
-                    <option value="WebDev">yellow</option>
-                    <option value="Google">green</option>
-                    <option value="Other">white</option>
+                <select type="text" id="bgcolor" name="bgcolor">
+                    <option value="rgb(224, 200, 220)">pink</option>
+                    <option value="rgb(241, 248, 255)">blue</option>
+                    <option value="rgb(255, 255, 241)">yellow</option>
+                    <option value="rgb(241, 255, 242)">green</option>
+                    <option value="white">white</option>
                 </select>
 
                 <label for="font"><h3>choose font family:</h3></label>
-                <select type="text" id="font" form="bgcolor">
-                    <option value="GitHub">font1</option>
-                    <option value="LinkedIn">font2</option>
-                    <option value="WebDev">font3</option>
-                    <option value="Google">font4</option>
-                    <option value="Other">font5</option>
+                <select type="text" id="font" name="font">
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="cursive">cursive</option>
+                    <option value="system-ui">system-ui</option>
                 </select>
 
                 <h3>choose light or dark mode</h3>
                 <label for="l">light</label>
-                <input type="radio" id ="l" name="mode">
+                <input type="radio" id ="l" value="light" name="mode">
                 <label for="d">dark</label>
-                <input type="radio" id ="d" name="mode">
+                <input type="radio" id ="d" value="dark" name="mode">
             </div>
                 <br>
-                <button type="submit">Submit</button>
+                <button type="submit" onclick="">Submit</button>
                 <button type="reset">Reset</button>
         </form>
+        <!-- <script type="text/javascript" src="./js/application.js"></script> -->
     </body>
 </html>
 
