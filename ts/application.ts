@@ -4,6 +4,7 @@ let history_f = false;
 let str_url = "";
 const info = 'developer: liel bidago,\n this is stage: 1.0.0,\nThis app is an Calculator.';
 
+
 function change_mode(id){
      
     if(id =='light'){
