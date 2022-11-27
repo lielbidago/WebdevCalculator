@@ -1,8 +1,4 @@
 
-//problems:
-// 1) div by 0 - to_display("Error - division by 0");
-// 2) check for dots
-// 3) check for errors in sc_eval
 
 let first_num = 0;
 let second_num = 0;
