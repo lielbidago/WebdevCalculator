@@ -4,23 +4,29 @@
 // 2) check for dots
 // 3) check for errors in sc_eval
 
+//cr dfb
+
+
 let first_num = 0;
 let second_num = 0;
 let curr_oper = "";
 let curr_val = 0;
 let cur = "";
 let lastEntered:string = "";
+let remote_f = false;
 
 const actions=['+','-','/','x'];
 const numbers=['0','1','2','3','4','5','6','7','8','9'];
 const sci_actions = ["**2","**1/2","**","**1/","%","π"];
 let display = "";
 let to_log = '';
+let remote_exp = '0';
 
 document.addEventListener('DOMContentLoaded', ()=>to_display(display));
 const DISPLAY = document.getElementById("display") || document.createElement('display_none');
 const LOG_SCREEN = document.getElementById("calculations") as Element;
 
+    
 
 function enter(id:string){
 
@@ -36,12 +42,61 @@ function enter(id:string){
         back(lastEntered);
         return;
     }
+    
+    if(id=='remote'){
+        remote_f = !remote_f;
+        reset();
+        change_mode(id);
+        return;
+    }
+    if(remote_f){ //if remote is true
+        remote_eval(id);
+        return;
+    }
 
     if (!scien_f){ //if mode scienti is off
         simple_eval(id);
     }else{
         sc_eval(id);
     }
+    
+}
+
+function remote_eval(id){
+    if(id=='eq1'){
+        to_display('=');
+        op_log('=');
+        fetch_res(remote_exp);
+    }else{
+        if(actions.includes(id) || numbers.includes(id) || (id == '.' && !(remote_exp.includes('.')))){
+            
+            remote_exp+=id.replace('x','*');
+            to_display(remote_exp);
+            op_log(id);
+            
+        }
+    
+    }
+
+}
+
+async function fetch_res(to_calc) {
+    
+    const encoded_exp = encodeURIComponent(remote_exp);
+
+    encoded_exp.replace('x','*');
+
+    try{
+        console.log(encoded_exp);
+        const response = await fetch(`http://api.mathjs.org/v4/?expr=${encoded_exp.replace('x','*')}`);
+        const result = await response.text();
+        to_display(result);
+        op_log(result);
+        curr_val=Number(result);
+    }catch(err){
+        console.log(err);
+    }
+    
     
 }
 function simple_eval(id){
@@ -59,10 +114,15 @@ function simple_eval(id){
         }
         display = cur;
         to_display(display); 
+        op_log(display);
+        
 
     }else if ((actions.includes(id)) && first_num){ //meaning id is in actions and fn is full
         display=id; //
         to_display(display);
+        op_log(display);
+
+        
         if (!second_num){ //sn is empty
             if (cur){
                 second_num = Number(cur);
@@ -76,17 +136,19 @@ function simple_eval(id){
             first_num = eq(first_num, second_num, curr_oper);
             curr_oper = id;
             second_num = Number(cur);
-            
         }
     }else if((actions.includes(id)) && !first_num && !(id =="eq1")){ //id in actions & fn is empty
         display =id; //
         to_display(display);
+        op_log(cur);
         first_num = Number(cur);
         curr_oper = id;
         cur = "";
     }else if(id == "eq1"){
         display ="="; //
         to_display(display);
+        op_log(first_num+curr_oper+second_num);
+        op_log(display);
         second_num = Number(cur);
 
         if (!curr_oper){ // incase we entered a number and then pressed '='
@@ -117,6 +179,7 @@ function sc_eval(id){
         }
         display+=id;
         to_display(display); 
+        op_log(display);
 
     }else if(id=='eq1'){
         to_display('=');
@@ -131,6 +194,7 @@ function sc_eval(id){
         console.log(curr_val);
         display='';
         to_display(String(curr_val)); 
+        op_log(String(curr_val));
         reset();
     }
 }
@@ -154,6 +218,7 @@ function zero_string(n:number):string{
 function eval_result(){ 
     curr_val = eq(first_num, second_num, curr_oper);
     to_display(String(curr_val));
+    op_log(String(curr_val));
 }
 // function eval_sci_actions(pre_str:string):string{
 //     //2+3*2-4**8√12
@@ -216,7 +281,7 @@ function to_display(todisplay:string){
         todisplay = "Error - division by 0";
     }
     DISPLAY.innerHTML = todisplay;
-    op_log(todisplay);
+    
 }
 
 function op_log(log_this){

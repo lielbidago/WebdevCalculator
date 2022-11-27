@@ -39,7 +39,13 @@ function change_mode(id) {
             history_f = !history_f;
         }
     }
-    else if (id == 'config') {
+    else if (id == 'remote') {
+        if (remote_f) {
+            get_item(id).style.background = "rgb(255, 199, 125)";
+        }
+        else {
+            get_item(id).style.background = "aliceblue";
+        }
     }
     //     if(document.body.className =='light'){  <----- dark mode
     //         document.body.className ='dark';
@@ -75,12 +81,11 @@ function get_config_result() {
 }
 document.addEventListener("DOMContentLoaded", config_set);
 function config_set() {
-    const data = window.location.search;
+    const data = window.location.search; //can replace window with globalthis
     let params = new URLSearchParams(data);
     const color = params.get('bgcolor');
     const mode = params.get('mode');
     const font = params.get('font');
-    console.log(document.body.classList[0]);
     if (color) {
         document.body.style.background = color;
     }
